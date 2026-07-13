@@ -1,4 +1,8 @@
-WEBSITE PEMPEK ALBIRRU
+WEBSITE PEMPEK ALBIRRU V2
+
+Perubahan V2:
+- Tombol Pesan via WhatsApp dan tombol WA mengambang membuka keranjang.
+- Keranjang memiliki pilihan kirim pesanan dan hubungi penjual tanpa pesan.
 
 Cara membuka:
 1. Ekstrak file ZIP.
