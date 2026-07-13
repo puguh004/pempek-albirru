@@ -4,3 +4,7 @@
 
 /* V2: tombol keranjang dan kontak penjual */
 .btn{font-family:inherit}.contact{background:#fff;color:var(--green);border:2px solid var(--green)}.floating-wa{border:0;font-family:inherit;font-size:16px;cursor:pointer}
+
+/* V3: menu dinamis dari Supabase */
+.menu-loading{grid-column:1/-1;text-align:center;color:#64748b;padding:50px}.menu-photo{width:calc(100% + 48px);height:180px;object-fit:cover;margin:-24px -24px 24px;display:block}.menu-card:has(.menu-photo) h3{margin-top:0}
+@media(max-width:600px){.menu-photo{width:calc(100% + 34px);height:125px;margin:-17px -17px 18px}}

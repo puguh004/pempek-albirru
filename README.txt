@@ -1,8 +1,14 @@
-WEBSITE PEMPEK ALBIRRU V2
+WEBSITE PEMPEK ALBIRRU V3
 
 Perubahan V2:
 - Tombol Pesan via WhatsApp dan tombol WA mengambang membuka keranjang.
 - Keranjang memiliki pilihan kirim pesanan dan hubungi penjual tanpa pesan.
+
+FITUR V3:
+- Katalog membaca menu aktif dari database Supabase.
+- Halaman /login/ untuk akun penjual.
+- Halaman /admin/ untuk tambah, edit, hapus, dan sembunyikan menu.
+- Admin dapat mengubah harga, deskripsi, ikon, urutan, dan gambar produk.
 
 Cara membuka:
 1. Ekstrak file ZIP.
