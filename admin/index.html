@@ -1,1 +1,20 @@
-
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#052f54">
+  <title>Dashboard Penjual — Pempek Albirru</title><link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header><a class="brand" href="../"><small>PEMPEK</small> ALBIRRU</a><div><a class="store-link" href="../" target="_blank">Lihat toko ↗</a><button id="logout">Keluar</button></div></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">Dashboard Penjual</p><h1>Kelola Menu</h1><p>Tambah produk, ubah harga, unggah gambar, atau sembunyikan menu yang sedang habis.</p></div><button class="primary" id="newProduct">+ Menu Baru</button></section>
+    <section class="summary"><article><span>Total menu</span><strong id="totalProducts">–</strong></article><article><span>Menu aktif</span><strong id="activeProducts">–</strong></article><article><span>Terakhir diperbarui</span><strong id="lastUpdated">–</strong></article></section>
+    <div id="status" class="status">Memuat menu…</div><section id="productList" class="product-list"></section>
+  </main>
+  <dialog id="productDialog"><form id="productForm"><div class="dialog-head"><div><p class="eyebrow">Data Produk</p><h2 id="formTitle">Menu Baru</h2></div><button class="close" type="button" id="closeDialog">×</button></div><input type="hidden" id="productId">
+    <div class="form-grid"><label class="wide">Nama menu<input id="name" required maxlength="80" placeholder="Contoh: Kapal Selam"></label><label>Harga (Rp)<input id="price" type="number" required min="0" step="500" placeholder="18000"></label><label>Urutan<input id="sortOrder" type="number" min="0" value="0"></label><label class="wide">Deskripsi<textarea id="description" maxlength="180" placeholder="Deskripsi singkat menu"></textarea></label><label>Ikon/emoji<input id="icon" maxlength="8" placeholder="🐟"></label><label class="switch-label">Status menu<span class="switch"><input id="active" type="checkbox" checked><i></i></span><b id="activeText">Aktif</b></label><label class="wide">Gambar produk <small>(opsional, maks. 5 MB)</small><input id="image" type="file" accept="image/jpeg,image/png,image/webp"><span id="imageName" class="file-name"></span></label></div>
+    <p id="formMessage" class="form-message"></p><div class="form-actions"><button type="button" class="secondary" id="cancelForm">Batal</button><button type="submit" class="primary" id="saveProduct">Simpan Menu</button></div></form></dialog>
+  <dialog id="deleteDialog" class="delete-dialog"><h2>Hapus menu?</h2><p id="deleteText"></p><div class="form-actions"><button class="secondary" id="cancelDelete">Batal</button><button class="danger" id="confirmDelete">Ya, Hapus</button></div></dialog>
+  <script src="../config.js"></script><script src="admin.js"></script>
+</body></html>
