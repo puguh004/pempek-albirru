@@ -1,1 +1,29 @@
-
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#064d8d">
+  <title>Login Penjual — Pempek Albirru</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <main class="login-shell">
+    <section class="brand-panel">
+      <a href="../" class="back">← Kembali ke toko</a>
+      <div><p class="eyebrow">Pempek asli Palembang</p><h1>Pempek<br><span>Albirru</span></h1><p>Kelola menu, harga, ketersediaan, dan gambar produk dari satu tempat.</p></div>
+      <small>Area khusus penjual</small>
+    </section>
+    <section class="form-panel">
+      <form id="loginForm">
+        <p class="eyebrow blue">Portal Penjual</p><h2>Selamat datang</h2><p class="lead">Masuk menggunakan akun admin yang sudah dibuat di Supabase.</p>
+        <label>Email admin<input id="email" type="email" autocomplete="username" required placeholder="nama@email.com"></label>
+        <label>Password<input id="password" type="password" autocomplete="current-password" required placeholder="Masukkan password admin"></label>
+        <p id="message" class="message" role="alert"></p>
+        <button id="loginButton" type="submit">Masuk ke Dashboard</button>
+        <p class="security">🔒 Password diverifikasi langsung oleh Supabase dan tidak disimpan di website.</p>
+      </form>
+    </section>
+  </main>
+  <script src="../config.js"></script><script src="login.js"></script>
+</body>
+</html>
