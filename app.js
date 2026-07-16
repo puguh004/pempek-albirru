@@ -49,18 +49,78 @@ document.addEventListener('click',e=>{
   if(minusId){cart[minusId]--;if(cart[minusId]<=0)delete cart[minusId];save()}
   const close=e.target.dataset.close;if(close)document.getElementById(close).close();
 });
-const openCart=()=>document.getElementById('cartDialog').showModal();
+const customerName=document.getElementById('customerName');
+const otherDate=document.getElementById('otherDate');
+const otherDateWrap=document.getElementById('otherDateWrap');
+const cartError=document.getElementById('cartError');
+const todayIso=()=>{
+  const today=new Date();
+  return `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+};
+const clearCartError=()=>{
+  cartError.textContent='';
+  customerName.classList.remove('field-invalid');
+  otherDate.classList.remove('field-invalid');
+};
+const showCartError=(message,field)=>{
+  cartError.textContent=message;
+  if(field){field.classList.add('field-invalid');field.focus();field.scrollIntoView({behavior:'smooth',block:'center'})}
+};
+const openCart=()=>{
+  clearCartError();
+  otherDate.min=todayIso();
+  document.getElementById('cartDialog').showModal();
+};
 document.getElementById('openCart').onclick=openCart;
 document.getElementById('heroOpenCart').onclick=openCart;
 document.getElementById('floatingOpenCart').onclick=openCart;
 document.getElementById('showQris').onclick=()=>document.getElementById('qrisDialog').showModal();
 document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d)d.close()}));
+document.querySelectorAll('input[name="orderDay"]').forEach(input=>input.addEventListener('change',()=>{
+  const chooseDate=input.value==='Hari lain'&&input.checked;
+  otherDateWrap.classList.toggle('show',chooseDate);
+  otherDate.required=chooseDate;
+  if(!chooseDate){otherDate.value='';otherDate.classList.remove('field-invalid')}
+  clearCartError();
+}));
+document.querySelectorAll('input[name="servingType"],input[name="referral"]').forEach(input=>input.addEventListener('change',clearCartError));
+customerName.addEventListener('input',clearCartError);
+otherDate.addEventListener('input',clearCartError);
 document.getElementById('checkout').onclick=()=>{
   const entries=products.filter(p=>cart[productKey(p.id)]);
-  if(!entries.length){alert('Keranjang masih kosong.');return}
+  clearCartError();
+  if(!entries.length){showCartError('Keranjang masih kosong. Pilih menu terlebih dahulu.');return}
+  const name=customerName.value.trim().replace(/\s+/g,' ');
+  const serving=document.querySelector('input[name="servingType"]:checked');
+  const orderDay=document.querySelector('input[name="orderDay"]:checked');
+  if(!name){showCartError('Nama wajib diisi.',customerName);return}
+  if(!serving){showCartError('Pilih penyajian: Goreng, Rebus hangat, atau Beku vakum.');return}
+  if(!orderDay){showCartError('Pilih waktu pesanan: Hari ini, Besok, Lusa, atau Hari lain.');return}
+  if(orderDay.value==='Hari lain'&&!otherDate.value){showCartError('Pilih tanggal pesanan.',otherDate);return}
+  if(orderDay.value==='Hari lain'&&otherDate.value<todayIso()){showCartError('Tanggal pesanan tidak boleh sebelum hari ini.',otherDate);return}
   const total=entries.reduce((n,p)=>n+Number(p.price)*cart[productKey(p.id)],0);
   const notes=document.getElementById('orderNotes').value.trim();
-  const lines=['Halo Pempek Albirru, saya mau pesan:','',...entries.map((p,i)=>{const qty=cart[productKey(p.id)];return `${i+1}. ${p.name} — ${qty} pcs × ${rupiah(p.price)} = ${rupiah(qty*p.price)}`}),'',`Total sementara: ${rupiah(total)}`,notes?`Catatan: ${notes}`:'','','Mohon konfirmasi stok, ongkir, dan total akhirnya. Terima kasih.'].filter(Boolean);
+  const referrals=[...document.querySelectorAll('input[name="referral"]:checked')].map(input=>input.value);
+  let deliveryDay=orderDay.value;
+  if(orderDay.value==='Hari lain'){
+    const chosen=new Date(`${otherDate.value}T00:00:00`);
+    deliveryDay=chosen.toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  }
+  const lines=[
+    'Halo Pempek Albirru, saya mau pesan:',
+    '',
+    `Nama: ${name}`,
+    `Penyajian: ${serving.value}`,
+    `Pesanan untuk: ${deliveryDay}`,
+    referrals.length?`Kenal dari: ${referrals.join(', ')}`:'',
+    '',
+    ...entries.map((p,i)=>{const qty=cart[productKey(p.id)];return `${i+1}. ${p.name} — ${qty} pcs × ${rupiah(p.price)} = ${rupiah(qty*p.price)}`}),
+    '',
+    `Total sementara: ${rupiah(total)}`,
+    notes?`Catatan: ${notes}`:'',
+    '',
+    'Mohon konfirmasi stok, ongkir, dan total akhirnya. Terima kasih.'
+  ].filter((line,index,all)=>line!==''||all[index-1]!=='');
   window.open(`https://wa.me/${cfg.whatsapp}?text=${encodeURIComponent(lines.join('\n'))}`,'_blank');
 };
 loadProducts();
