@@ -70,7 +70,37 @@
 
   <button class="floating-wa" id="floatingOpenCart" type="button" aria-label="Buka keranjang">WA</button>
 
-  <dialog id="cartDialog" class="dialog"><div class="dialog-head"><div><small>Pesanan Anda</small><h2>Keranjang</h2></div><button class="close" data-close="cartDialog">×</button></div><div id="cartItems" class="cart-items"></div><div class="cart-total"><span>Total sementara</span><strong id="cartTotal">Rp0</strong></div><label class="notes-label">Catatan pesanan<textarea id="orderNotes" placeholder="Contoh: digoreng, cuko dipisah, kirim jam 16.00"></textarea></label><button class="btn whatsapp full" id="checkout">Kirim Pesanan ke WhatsApp</button><a class="btn contact full" href="https://wa.me/6283182435471" target="_blank" rel="noopener">Hubungi Penjual Tanpa Pesan</a><p class="fineprint">Harga belum termasuk biaya pengiriman. Stok dan total akhir akan dikonfirmasi melalui WhatsApp.</p></dialog>
+  <dialog id="cartDialog" class="dialog">
+    <div class="dialog-head"><div><small>Pesanan Anda</small><h2>Keranjang</h2></div><button class="close" data-close="cartDialog">×</button></div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-total"><span>Total sementara</span><strong id="cartTotal">Rp0</strong></div>
+    <section class="customer-data">
+      <h3>Data Pemesan</h3>
+      <label class="field-label"><span>Nama <em>*</em></span><input id="customerName" type="text" maxlength="80" autocomplete="name" placeholder="Masukkan nama kamu"></label>
+      <fieldset><legend>Pilihan penyajian <em>*</em></legend><div class="choice-grid choice-grid-3">
+        <label class="choice-card"><input type="radio" name="servingType" value="Goreng"><span>Goreng</span></label>
+        <label class="choice-card"><input type="radio" name="servingType" value="Rebus hangat"><span>Rebus hangat</span></label>
+        <label class="choice-card"><input type="radio" name="servingType" value="Beku vakum"><span>Beku vakum</span></label>
+      </div></fieldset>
+      <fieldset><legend>Pesanan untuk kapan? <em>*</em></legend><div class="choice-grid choice-grid-4">
+        <label class="choice-card"><input type="radio" name="orderDay" value="Hari ini"><span>Hari ini</span></label>
+        <label class="choice-card"><input type="radio" name="orderDay" value="Besok"><span>Besok</span></label>
+        <label class="choice-card"><input type="radio" name="orderDay" value="Lusa"><span>Lusa</span></label>
+        <label class="choice-card"><input type="radio" name="orderDay" value="Hari lain"><span>Hari lain</span></label>
+      </div><p class="field-help">Jika memilih Hari lain, tentukan tanggal pengiriman.</p></fieldset>
+      <label class="field-label other-date" id="otherDateWrap"><span>Tanggal pesanan <em>*</em></span><input id="otherDate" type="date"></label>
+      <fieldset><legend>Kenal Pempek Albirru dari mana? <span>(opsional)</span></legend><div class="choice-grid choice-grid-3">
+        <label class="choice-card"><input type="checkbox" name="referral" value="Tetangga komplek"><span>Tetangga komplek</span></label>
+        <label class="choice-card"><input type="checkbox" name="referral" value="Teman kerja"><span>Teman kerja</span></label>
+        <label class="choice-card"><input type="checkbox" name="referral" value="Teman kampus"><span>Teman kampus</span></label>
+      </div></fieldset>
+      <label class="notes-label"><b>Catatan pesanan <span>(opsional)</span></b><textarea id="orderNotes" placeholder="Contoh: Pakai GoSend ke Pancoran, Jakarta Selatan. Kira-kira ongkirnya berapa ya?&#10;Contoh: Bisa dikirim jam 5 sore?&#10;Contoh: Tolong kirim setelah jam 3 ya.&#10;Contoh: Saya ambil sendiri nanti sore.&#10;Contoh: Tolong kabari sebelum dikirim ya."></textarea></label>
+      <p class="cart-error" id="cartError" role="alert"></p>
+    </section>
+    <button class="btn whatsapp full" id="checkout">Kirim Pesanan ke WhatsApp</button>
+    <a class="btn contact full" href="https://wa.me/6283182435471" target="_blank" rel="noopener">Hubungi Penjual Tanpa Pesan</a>
+    <p class="fineprint">Harga belum termasuk biaya pengiriman. Stok dan total akhir akan dikonfirmasi melalui WhatsApp.</p>
+  </dialog>
   <dialog id="qrisDialog" class="dialog qris-dialog"><div class="dialog-head"><div><small>Pembayaran</small><h2>Scan QRIS</h2></div><button class="close" data-close="qrisDialog">×</button></div><img src="assets/qris-albirru.png" alt="QRIS Pempek Albirru"><p>Pastikan nama merchant yang tampil adalah <b>PEMPEK ALBIRRU, TREVISTA HILLS</b>.</p></dialog>
   <div class="toast" id="toast" role="status">Ditambahkan ke keranjang</div>
   <script src="config.js"></script>
