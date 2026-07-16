@@ -1,4 +1,4 @@
-WEBSITE PEMPEK ALBIRRU V3
+WEBSITE PEMPEK ALBIRRU V4
 
 Perubahan V2:
 - Tombol Pesan via WhatsApp dan tombol WA mengambang membuka keranjang.
@@ -10,6 +10,13 @@ FITUR V3:
 - Halaman /admin/ untuk tambah, edit, hapus, dan sembunyikan menu.
 - Admin dapat mengubah harga, deskripsi, ikon, urutan, dan gambar produk.
 
+FITUR V4:
+- Keranjang meminta nama pemesan (wajib).
+- Pilihan penyajian Goreng, Rebus hangat, atau Beku vakum (wajib).
+- Pilihan waktu Hari ini, Besok, Lusa, atau Hari lain (wajib).
+- Pilihan sumber kenalan dan catatan pesanan bersifat opsional.
+- Data pemesan ikut disusun otomatis dalam pesan WhatsApp.
+
 Cara membuka:
 1. Ekstrak file ZIP.
 2. Buka file index.html menggunakan browser.
@@ -20,4 +27,4 @@ Cara memasang gratis di GitHub Pages:
 3. Masuk Settings > Pages.
 4. Pada Source pilih Deploy from a branch, branch main, folder /root, lalu Save.
 
-Website tidak membutuhkan database atau layanan berbayar. Keranjang tersimpan lokal di browser dan checkout diteruskan ke WhatsApp 0831-8243-5471.
+Menu dan halaman admin memakai Supabase paket gratis. Keranjang tersimpan lokal di browser dan checkout diteruskan ke WhatsApp 0831-8243-5471.
