@@ -1,12 +1,14 @@
 const cfg=window.ALBIRRU_CONFIG;
 const fallbackProducts=[
- {id:'kapal',name:'Kapal Selam',price:18000,icon:'🥚',description:'Pempek besar dengan isian telur',active:true},
- {id:'telur',name:'Telur Kecil',price:6000,icon:'🍳',description:'Pempek telur ukuran kecil',active:true},
- {id:'lenjer',name:'Lenjer',price:4000,icon:'🥖',description:'Pempek klasik berbentuk panjang',active:true},
- {id:'keriting',name:'Keriting',price:4000,icon:'🌼',description:'Tekstur unik, gurih dan kenyal',active:true},
- {id:'adaan',name:'Adaan',price:4000,icon:'🟠',description:'Bulat, gurih dan harum bawang',active:true},
- {id:'otak',name:'Otak-Otak Tenggiri',price:4000,icon:'🐟',description:'Aroma panggang yang menggoda',active:true},
- {id:'kulit',name:'Pempek Kulit',price:3000,icon:'🟫',description:'Gurih dan renyah saat digoreng',active:true}
+ {id:'kulit',name:'Pempek Kulit',price:3000,icon:'🟫',description:'Gurih dan renyah saat digoreng',active:true,sort_order:1},
+ {id:'lenjer',name:'Pempek Lenjer',price:4000,icon:'🥖',description:'Pempek klasik berbentuk panjang',active:true,sort_order:2},
+ {id:'adaan',name:'Pempek Adaan',price:4000,icon:'🟠',description:'Bulat, gurih, dan harum bawang',active:true,sort_order:3},
+ {id:'keriting',name:'Pempek Keriting',price:4000,icon:'🌼',description:'Tekstur unik, gurih, dan kenyal',active:true,sort_order:4},
+ {id:'otak',name:'Otak Otak Bakar',price:4000,icon:'🐟',description:'Dipanggang dadakan, gurih dan harum',active:true,sort_order:5},
+ {id:'telur',name:'Pempek Isi Telur',price:6000,icon:'🍳',description:'Pempek dengan isian telur',active:true,sort_order:6},
+ {id:'krispi',name:'Pempek Krispi',price:6000,icon:'✨',description:'Renyah di luar, gurih di dalam',active:true,sort_order:7},
+ {id:'kapal',name:'Pempek Kapal Selam',price:18000,icon:'🥚',description:'Pempek besar dengan isian telur',active:true,sort_order:8},
+ {id:'rujak-mie',name:'Rujak Mie',price:30000,icon:'🍜',description:'Rujak mie khas Palembang, segar dan lengkap',active:true,sort_order:9}
 ];
 let products=[];
 let cart=JSON.parse(localStorage.getItem('albirru-cart')||'{}');
